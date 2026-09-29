@@ -20,7 +20,12 @@ namespace Solution
 
                 Debug.Log("You win");
                 //add code to manage leaderboard scores
-    
+                int scorereceived = CalculateScore();
+                string PlayerName = mapGenerator.player.Name;
+                leaderboard.RecordScore(new PlayerScore(PlayerName, scorereceived));
+                leaderboard.PrintScores();
+                leaderboard.ShowleaderBoard();
+
                 return true;
             }
             else {
