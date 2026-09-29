@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace Assignment
 {
@@ -22,6 +23,10 @@ namespace Assignment
                     break;
                 }
             }   
+            if (index == -1)
+            {
+                Console.WriteLine("Find not Found!");
+            }
 
             return index;
         }
@@ -87,6 +92,10 @@ namespace Assignment
                 {
                     right = mid - 1;
                 }
+            }
+            if (index == -1)
+            {
+              Console.WriteLine("Find not Found!");
             }
 
             return index;
