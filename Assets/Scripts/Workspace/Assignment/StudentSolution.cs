@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEditor.Experimental.GraphView;
 
 namespace Assignment
 {
@@ -107,17 +109,74 @@ namespace Assignment
 
         public int[] AS01_FindFirstAndLastElementOfArray(int[] array, int target)
         {
-            throw new NotImplementedException();
+            int arrayLength = array.Length;
+            int firstIndex = -1; 
+            int lastIndex = arrayLength - 1;
+            int nullIndex = -1;
+
+            for (int i = 0; i < arrayLength; i++) // first index
+            {
+                if (array[i] == target)
+                {
+                    firstIndex = i;
+                    break;
+                }
+                
+            }
+            for (int i = arrayLength - 1; i >= 0; i--) // last index
+            {
+                if (array[i] == target)
+                {
+                    lastIndex = i;
+                    break;
+                }
+               
+
+            }
+            if (firstIndex == -1 && lastIndex == arrayLength - 1)
+            {
+                return new[] { nullIndex };
+            }
+
+            return new[] { firstIndex, lastIndex };
         }
 
         public int AS02_FindMaxLessThan(int[] array, int target)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0)
+                return -1;
+
+            bool found = false;   // บอกว่าเจอค่าที่เข้าเงื่อนไขแล้วหรือยัง
+            int max = -1;         // ค่าที่มากที่สุดที่ < target (ใช้จริงเมื่อ found == true)
+
+            foreach (int value in array)
+            {
+                if (value < target && (!found || value > max))
+                {
+                    max = value;
+                    found = true;
+                }
+            }
+
+            return found ? max : -1;
+
+
         }
 
         public int[] AS03_FindRange(int[] array, int min, int max)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0 || min > max)
+                return new int[0];
+
+            List<int> result = new List<int>();
+
+            foreach (int value in array)
+            {
+                if (value >= min && value <= max)
+                    result.Add(value);
+            }
+
+            return result.ToArray();
         }
 
         #endregion
